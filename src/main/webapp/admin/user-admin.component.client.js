@@ -7,7 +7,7 @@
     const $firstNameFld = $('#firstNameFld');
     const $lastNameFld = $('#lastNameFld');
     const $roleFld = $('#roleFld')
-    const userRowTemplate = $('.userRowTemplate');
+    const userRowTemplate = $('.wbdv-userRowTemplate');
     const tbody = $('tbody');
     const $deleteBtn = $('.deleteBtn');
     const $editBtn = $('.editBtn');
@@ -48,12 +48,12 @@
     function renderUser(user) {
         const row = userRowTemplate.clone()
         row.removeClass('d-none')
-        const usernameCol = row.find('.usernameCol')
-        const passwordCol = row.find('.passwordCol')
-        const firstNameCol = row.find('.firstNameCol')
-        const lastNameCol = row.find('.lastNameCol')
-        const roleCol = row.find('.roleCol')
-        const deleteBtn = row.find('.deleteBtn')
+        const usernameCol = row.find('.wbdv-usernameCol')
+        const passwordCol = row.find('.wbdv-passwordCol')
+        const firstNameCol = row.find('.wbdv-firstNameCol')
+        const lastNameCol = row.find('.wbdv-lastNameCol')
+        const roleCol = row.find('.wbdv-roleCol')
+        const deleteBtn = row.find('.wbdv-deleteBtn')
         deleteBtn.click(deleteUser)
         deleteBtn.attr('id', user.id)
 
