@@ -9,10 +9,10 @@
     const $roleFld = $('#roleFld')
     const userRowTemplate = $('.userRowTemplate');
     const tbody = $('tbody');
-    const $deleteBtn = $('.deleteBtn')
-    const $updateBtn = $('.updateBtn')
-    const findAllUsersUrl = 'http://localhost:8080/users'
-    const deleteUserUrl = 'http://localhost:8080/users/USER_ID'
+    const $deleteBtn = $('.deleteBtn');
+    const $editBtn = $('.editBtn');
+    const findAllUsersUrl = '/users'
+    const deleteUserUrl = '/users/USER_ID'
     const userService = new UserService()
     
     function findAllUsers(){
@@ -31,7 +31,6 @@
 
     $createBtn.click(createUser)
     $deleteBtn.click(deleteUser)
-    $updateBtn.click(selectUser)
 
     function deleteUser(event) {
         deleteBtn = $(event.currentTarget)
@@ -94,4 +93,5 @@
             .createUser(user)
             .then(renderUsers)
     }
+    
 })()

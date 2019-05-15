@@ -1,8 +1,8 @@
 
 function UserService() {
 
-    this.deleteUserUrl = 'http://localhost:8080/users/USER_ID'
-    this.findAllUsersUrl = 'http://localhost:8080/users'
+    this.deleteUserUrl = '/users/USER_ID'
+    this.findAllUsersUrl = '/users'
     this.findAllUsers = findAllUsers;
     this.findUserById = findUserById
     this.deleteUser = deleteUser;
@@ -12,7 +12,7 @@ function UserService() {
     function createUser(user) {
         user.id = (new Date()).getTime()
         console.log(user)
-        return fetch("http://localhost:8080/users", {
+        return fetch("/users", {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
