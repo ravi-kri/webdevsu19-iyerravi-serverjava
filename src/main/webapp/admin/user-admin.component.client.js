@@ -1,26 +1,22 @@
-(function () {
-
-    const $elem = $('.container-fluid');
-    const $createBtn = $('#createBtn');
-    const $usernameFld = $('#usernameFld');
-    const $passwordFld = $('#passwordFld');
-    const $firstNameFld = $('#firstNameFld');
-    const $lastNameFld = $('#lastNameFld');
-    const $roleFld = $('#roleFld')
-    const userRowTemplate = $('.wbdv-userRowTemplate');
-    const tbody = $('tbody');
-    const $deleteBtn = $('.deleteBtn');
-    const $editBtn = $('.editBtn');
-    const findAllUsersUrl = '/users'
-    const deleteUserUrl = '/users/USER_ID'
-    const userService = new UserService()
+(function main() {
+        const $elem = $('.container-fluid');
+        const $createBtn = $('#createBtn');
+        const $usernameFld = $('#usernameFld');
+        const $passwordFld = $('#passwordFld');
+        const $firstNameFld = $('#firstNameFld');
+        const $lastNameFld = $('#lastNameFld');
+        const $roleFld = $('#roleFld')
+        const userRowTemplate = $('.wbdv-userRowTemplate');
+        const tbody = $('tbody');
+        const $deleteBtn = $('.deleteBtn');
+        const $editBtn = $('.editBtn');
+        const findAllUsersUrl = '/users'
+        const deleteUserUrl = '/users/USER_ID'
+        const userService = new UserService()
+        findAllUsers()
+        $createBtn.click(createUser)
+    $deleteBtn.click(deleteUser)
     
-    function findAllUsers(){
-        userService.findAllUsers().then(renderUsers)
-    }
-   
-    findAllUsers()
-
     function renderUsers(users) {
         $("tbody").empty()
         for(i in users) {
@@ -28,9 +24,11 @@
         }
     }
 
+    function findAllUsers(){
+        userService.findAllUsers().then(renderUsers)
+    }
 
-    $createBtn.click(createUser)
-    $deleteBtn.click(deleteUser)
+    
 
     function deleteUser(event) {
         deleteBtn = $(event.currentTarget)
