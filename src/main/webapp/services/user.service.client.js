@@ -9,43 +9,37 @@ function UserService() {
     this.createUser = createUser;
     this.updateUser = updateUser;
 
-    function createUser(user) {
+    async function createUser(user) {
         user.id = (new Date()).getTime()
         console.log(user)
-        return fetch("/users", {
+        const response = await fetch("/users", {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(function(response) {
-            return response.json()
-        })
+        });
+        return response.json();
     }
 
-    function findUserById(){
-        return fetch("http://localhost:8080/users/USER_ID", {
+    async function findUserById(userID){
+        const response = await fetch("/users", {
             method: 'GET',
-            body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(function(response) {
-            return response.json()
-        })
+        });
+        return response.json();
     }
 
-    function updateUser(userID,user){
-        return fetch("http://localhost:8080/users/"+userID, {
-            method: 'POST',
-            body: JSON.stringify(user),
+    async function updateUser(userID,user){
+        const response = await fetch("/users", {
+            method: 'GET',
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(function(response) {
-           
-            return response.json()
-        })
+        });
+        return response.json();
     }
 
    
@@ -55,11 +49,9 @@ function UserService() {
         })
     }
 
-    function findAllUsers(){
-        return fetch(this.findAllUsersUrl)
-        .then(function(response) {
-            return response.json();
-        });
+    async function findAllUsers(){
+        const response = await fetch(this.findAllUsersUrl);
+        return response.json();
     }
    
 }
