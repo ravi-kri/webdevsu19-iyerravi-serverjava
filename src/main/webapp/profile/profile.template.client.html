@@ -1,0 +1,100 @@
+<html>
+<head>
+  <!-- Bootstrap CDN -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Customized CSS for profile page -->
+<link rel="stylesheet" type="text/css" href="profile.style.client.css">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>  
+<body>
+  <div class="container">
+      <h1>Profile</h1>
+    <div id="success_alert" class="alert alert-success d-none" role="alert">
+      Profile successfully saved
+    </div>
+      <form>
+          <div class="form-group row">
+            <label for="usernameFld" class="col-sm-2 col-form-label">
+              Username </label>
+            <div class="col-sm-10">
+              <input class="form-control" 
+                      id="usernameFld" 
+                      placeholder="Alice" 
+                      disabled>
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="phoneNumber" class="col-sm-2 col-form-label">
+                Phone </label>
+              <div class="col-sm-10">
+                <input class="form-control" 
+                      id="phoneNumber" 
+                      placeholder="(555) 123-4323">
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="emailID" class="col-sm-2 col-form-label">
+                  Email </label>
+                <div class="col-sm-10">
+                  <input class="form-control" 
+                        id="emailID" 
+                        placeholder="alice@wonderland.com">
+                </div>
+              </div>
+
+
+              
+
+                <div class="form-group row">
+                    <label for="role" class="col-sm-2 col-form-label">
+                      Role </label>
+                    <div class="col-sm-10">
+                        <select id="role" class="form-control">
+                            <option value="Faculty">Faculty</option>
+                            <option value="Student">Student</option>
+                            <option value="Admin">Admin</option>
+                          </select>
+                    </div>
+                  </div>
+
+              <div class="form-group row">
+                  <label for="DOB" class="col-sm-2 col-form-label">
+                    Date of Birth </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" 
+                          type="date"
+                          id="DOB" 
+                          placeholder="mm/dd/yyyy">
+                  </div>
+                </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <button class="btn btn-success btn-block" id="update">Update</button>
+              
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <label class="col-sm-2 col-form-label"></label>
+              <div class="col-sm-10">
+                <button class="btn btn-danger btn-block" id="Logout">Logout</button>
+                
+              </div>
+            </div>
+        </form>
+
+
+  
+  <script type="text/javascript">
+  $( "#update" ).click(function(event) {
+    event.preventDefault()
+    $('#success_alert').removeClass('d-none');
+});
+  </script>
+  </body>
+</html>
