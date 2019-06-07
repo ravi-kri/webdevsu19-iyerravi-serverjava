@@ -10,11 +10,16 @@ public class WidgetService {
 	
 	static List<Widget> widgets = new ArrayList<Widget>();
     static {
-        widgets.add(new Widget(123, "Widget 1", "HEADING",1));
-        widgets.add(new Widget(234, "Widget 2", "LIST",2));
-        widgets.add(new Widget(345, "Widget 3", "PARAGRAPH",3));
-        widgets.add(new Widget(456, "Widget 4", "IMAGE",4));
-        widgets.add(new Widget(567, "Widget 5", "LINK",5));
+        widgets.add(new Widget(1, "Widget 1", "HEADING",1));
+        widgets.add(new Widget(2, "Widget 2", "LIST",2));
+        widgets.add(new Widget(3, "Widget 3", "PARAGRAPH",3));
+        widgets.add(new Widget(4, "Widget 4", "IMAGE",4));
+        widgets.add(new Widget(5, "Widget 5", "LINK",5));
+        widgets.add(new Widget(6, "Widget 6", "HEADING",6));
+        widgets.add(new Widget(7, "Widget 7", "LIST",7));
+        widgets.add(new Widget(8, "Widget 8", "PARAGRAPH",8));
+        widgets.add(new Widget(9, "Widget 9", "IMAGE",9));
+        widgets.add(new Widget(10, "Widget 10", "LINK",10));
     }
     
     public List<Widget> createWidget(Widget widget) {
@@ -48,16 +53,16 @@ public class WidgetService {
   
 	public List<Widget> deleteWidget(Integer wid) {
     	
-//    	widgets =  widgets.filter(widget -> !widget.getId().equals(wid)).collect(Collectors.toList());
+    	widgets =  widgets.stream().filter(widget -> !widget.getId().equals(wid)).collect(Collectors.toList());
     
-    	int i = 0;
-    	System.out.print("int i tak "); 
-    	for(Widget w: widgets) {
-            if(w.getId().equals(wid))
-               {widgets.remove(i); }
-         i = i + 1;
-        }
-    	return null;
+//    	int i = 0;
+//    	System.out.print("int i tak "); 
+//    	for(Widget w: widgets) {
+//            if(w.getId().equals(wid))
+//               {widgets.remove(i); }
+//         i = i + 1;
+//        }
+    	return widgets;
     }
     
     
