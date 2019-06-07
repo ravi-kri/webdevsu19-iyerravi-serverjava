@@ -5,14 +5,12 @@ public class Widget {
     private String name;
     private String type;
     private Integer index;
-    private Integer order;
     private String text;
-    private String url;
+    private String src;
     private Integer size;
-    private Integer width;
-    private Integer height;
-    private String cssClass;
-    private String style;
+    private String href;
+    private String items;
+    private Boolean isOrdered;
     private String value;
 
     public Integer getId() {
@@ -181,5 +179,61 @@ public class Widget {
 
 	public void setIndex(Integer index) {
 		this.index = index;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
+	}
+
+	public String getHref() {
+		return href;
+	}
+
+	public void setHref(String href) {
+		this.href = href;
+	}
+
+	public String getItems() {
+		return items;
+	}
+
+	public void setItems(String items) {
+		this.items = items;
+	}
+
+	public Boolean getIsOrdered() {
+		return isOrdered;
+	}
+
+	public void setIsOrdered(Boolean isOrdered) {
+		this.isOrdered = isOrdered;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 }

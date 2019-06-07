@@ -15,11 +15,6 @@ public class WidgetService {
         widgets.add(new Widget(3, "Widget 3", "PARAGRAPH",3));
         widgets.add(new Widget(4, "Widget 4", "IMAGE",4));
         widgets.add(new Widget(5, "Widget 5", "LINK",5));
-        widgets.add(new Widget(6, "Widget 6", "HEADING",6));
-        widgets.add(new Widget(7, "Widget 7", "LIST",7));
-        widgets.add(new Widget(8, "Widget 8", "PARAGRAPH",8));
-        widgets.add(new Widget(9, "Widget 9", "IMAGE",9));
-        widgets.add(new Widget(10, "Widget 10", "LINK",10));
     }
     
     public List<Widget> createWidget(Widget widget) {
@@ -54,19 +49,18 @@ public class WidgetService {
 	public List<Widget> deleteWidget(Integer wid) {
     	
     	widgets =  widgets.stream().filter(widget -> !widget.getId().equals(wid)).collect(Collectors.toList());
-    
-//    	int i = 0;
-//    	System.out.print("int i tak "); 
-//    	for(Widget w: widgets) {
-//            if(w.getId().equals(wid))
-//               {widgets.remove(i); }
-//         i = i + 1;
-//        }
     	return widgets;
     }
-    
-    
-    
+
+	public List<Widget> saveWidgets(List<Widget> widgets2) {
+		
+		widgets.clear();
+
+		for(Widget w: widgets2) {	
+			widgets.add(w);
+		}
+		return widgets;
+	}
     }
     
 	

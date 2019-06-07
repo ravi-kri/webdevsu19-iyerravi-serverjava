@@ -39,5 +39,7 @@ public class WidgetController {
     public List<Widget> deleteWidget(@PathVariable("widgetId") Integer wid) {
     	return WidgetService.deleteWidget(wid);
 }
-    
-}
+    @PostMapping("/api/savewidgets")
+	public List<Widget> saveWidgets(@RequestBody List<Widget> widgets) {
+    	return WidgetService.saveWidgets(widgets);
+}}
