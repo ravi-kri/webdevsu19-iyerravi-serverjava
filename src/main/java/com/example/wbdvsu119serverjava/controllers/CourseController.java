@@ -18,8 +18,8 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin("*")
 public class CourseController {
     @Autowired
     CourseRepository repository;

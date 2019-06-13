@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.wbdvsu119serverjava.models.User;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class UserController {
     private User[] users = {
