@@ -1,6 +1,19 @@
 package com.example.wbdvsu119serverjava.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String type;
@@ -12,6 +25,10 @@ public class Widget {
     private String items;
     private Boolean isOrdered;
     private String value;
+    
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;
 
     public Integer getId() {
         return id;
@@ -37,14 +54,13 @@ public class Widget {
         this.type = type;
     }
 
-	public Widget() {
+    public Widget() {
     }
 
-    public Widget(Integer id, String name, String type,Integer index) {
+    public Widget(Integer id, String name, String type) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.index = index;
     }
 
 	public Integer getIndex() {
@@ -53,14 +69,6 @@ public class Widget {
 
 	public void setIndex(Integer index) {
 		this.index = index;
-	}
-
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
 	}
 
 	public String getText() {
@@ -77,6 +85,14 @@ public class Widget {
 
 	public void setSrc(String src) {
 		this.src = src;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 
 	public String getHref() {
@@ -110,4 +126,12 @@ public class Widget {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	
+	 public Topic getTopic() {
+	        return topic;
+	    }
+
+     public void setTopic(Topic topic) {
+	        this.topic = topic;
+	    }
 }
