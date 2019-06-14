@@ -20,7 +20,7 @@ import com.example.wbdvsu119serverjava.repositories.*;
 @Service
 @RestController
 @CrossOrigin("*")
-public class HeadingWidgetService {
+public class HeadingWidgetController {
 	@Autowired
 	private TopicController topicService;
 	@Autowired

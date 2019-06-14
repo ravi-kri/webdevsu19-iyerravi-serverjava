@@ -21,7 +21,7 @@ import com.example.wbdvsu119serverjava.repositories.*;
 @Service
 @RestController
 @CrossOrigin("*")
-public class ImageWidgetService {
+public class ImageWidgetController {
 	@Autowired
 	private TopicController topicService;
 	@Autowired

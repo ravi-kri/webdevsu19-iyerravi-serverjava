@@ -20,48 +20,48 @@ import com.example.wbdvsu119serverjava.repositories.*;
 @Service
 @RestController
 @CrossOrigin("*")
-public class ListWidgetService {
+public class LinkWidgetController {
 	@Autowired
 	private TopicController topicService;
 	@Autowired
-	private ListWidgetRepository widgetRepo;
+	private LinkWidgetRepository widgetRepo;
 	
-	@PostMapping("/api/topic/{topicId}/list/widget")
-	public ListWidget createWidget(@PathVariable("topicId") Integer topicId, 
-								@RequestBody ListWidget widget) {
+	@PostMapping("/api/topic/{topicId}/link/widget")
+	public LinkWidget createWidget(@PathVariable("topicId") Integer topicId, 
+								@RequestBody LinkWidget widget) {
 			
 		Topic t = topicService.findTopicById(topicId);
 		if(t==null) return null;
 		widget.setTopic(t);
-		ListWidget updatedWidget = widgetRepo.save(widget);
+		LinkWidget updatedWidget = widgetRepo.save(widget);
 		t.addToWidgets(updatedWidget);
 		return updatedWidget;
 	}
 	
-	@GetMapping("/api/topic/{topicId}/list/widget")
+	@GetMapping("/api/topic/{topicId}/link/widget")
 	public List<Widget> findAllWidget(@PathVariable("topicId") Integer topicId){
 		return widgetRepo.findAllWidgetsForTopic(topicId);
 	}
 	
-	@GetMapping("/api/list/widget/{widgetId}")
-	public ListWidget findWidgetById(@PathVariable("widgetId") Integer widgetId) {
-		Optional<ListWidget> opt = widgetRepo.findById(widgetId);
+	@GetMapping("/api/link/widget/{widgetId}")
+	public LinkWidget findWidgetById(@PathVariable("widgetId") Integer widgetId) {
+		Optional<LinkWidget> opt = widgetRepo.findById(widgetId);
 		if(opt.isPresent())
 			return opt.get();
 		else 
 			return null;
 	}
 	
-	@PutMapping("/api/list/widget/{widgetId}")
-	public ListWidget updateWidget(@PathVariable("widgetId") Integer widgetId, @RequestBody ListWidget widget) {
-		Optional<ListWidget> opt = widgetRepo.findById(widgetId);
+	@PutMapping("/api/link/widget/{widgetId}")
+	public LinkWidget updateWidget(@PathVariable("widgetId") Integer widgetId, @RequestBody LinkWidget widget) {
+		Optional<LinkWidget> opt = widgetRepo.findById(widgetId);
 		if(opt.isPresent())
 		{
 			Widget old = opt.get();
 			widget.setId(old.getId());
 			widget.setTopic(old.getTopic());
 			
-			ListWidget updatedWidget = widgetRepo.save(widget);
+			LinkWidget updatedWidget = widgetRepo.save(widget);
 			updatedWidget.getTopic().getWidgets().remove(old);
 			updatedWidget.getTopic().getWidgets().add(updatedWidget);
 			
@@ -72,7 +72,7 @@ public class ListWidgetService {
 	}
 	
 	
-	@DeleteMapping("/api/list/widget/{widgetId}")
+	@DeleteMapping("/api/link/widget/{widgetId}")
 	public void deleteWidget(@PathVariable("widgetId") Integer widgetId) {
 		if(widgetRepo.existsById(widgetId))
 			widgetRepo.deleteById(widgetId);

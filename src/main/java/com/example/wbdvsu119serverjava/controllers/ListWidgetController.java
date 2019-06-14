@@ -20,48 +20,48 @@ import com.example.wbdvsu119serverjava.repositories.*;
 @Service
 @RestController
 @CrossOrigin("*")
-public class ParagraphWidgetService {
+public class ListWidgetController {
 	@Autowired
 	private TopicController topicService;
 	@Autowired
-	private ParagraphWidgetRepository widgetRepo;
+	private ListWidgetRepository widgetRepo;
 	
-	@PostMapping("/api/topic/{topicId}/paragraph/widget")
-	public ParagraphWidget createWidget(@PathVariable("topicId") Integer topicId, 
-								@RequestBody ParagraphWidget widget) {
+	@PostMapping("/api/topic/{topicId}/list/widget")
+	public ListWidget createWidget(@PathVariable("topicId") Integer topicId, 
+								@RequestBody ListWidget widget) {
 			
 		Topic t = topicService.findTopicById(topicId);
 		if(t==null) return null;
 		widget.setTopic(t);
-		ParagraphWidget updatedWidget = widgetRepo.save(widget);
+		ListWidget updatedWidget = widgetRepo.save(widget);
 		t.addToWidgets(updatedWidget);
 		return updatedWidget;
 	}
 	
-	@GetMapping("/api/topic/{topicId}/paragraph/widget")
+	@GetMapping("/api/topic/{topicId}/list/widget")
 	public List<Widget> findAllWidget(@PathVariable("topicId") Integer topicId){
 		return widgetRepo.findAllWidgetsForTopic(topicId);
 	}
 	
-	@GetMapping("/api/paragraph/widget/{widgetId}")
-	public ParagraphWidget findWidgetById(@PathVariable("widgetId") Integer widgetId) {
-		Optional<ParagraphWidget> opt = widgetRepo.findById(widgetId);
+	@GetMapping("/api/list/widget/{widgetId}")
+	public ListWidget findWidgetById(@PathVariable("widgetId") Integer widgetId) {
+		Optional<ListWidget> opt = widgetRepo.findById(widgetId);
 		if(opt.isPresent())
 			return opt.get();
 		else 
 			return null;
 	}
 	
-	@PutMapping("/api/paragraph/widget/{widgetId}")
-	public ParagraphWidget updateWidget(@PathVariable("widgetId") Integer widgetId, @RequestBody ParagraphWidget widget) {
-		Optional<ParagraphWidget> opt = widgetRepo.findById(widgetId);
+	@PutMapping("/api/list/widget/{widgetId}")
+	public ListWidget updateWidget(@PathVariable("widgetId") Integer widgetId, @RequestBody ListWidget widget) {
+		Optional<ListWidget> opt = widgetRepo.findById(widgetId);
 		if(opt.isPresent())
 		{
 			Widget old = opt.get();
 			widget.setId(old.getId());
 			widget.setTopic(old.getTopic());
 			
-			ParagraphWidget updatedWidget = widgetRepo.save(widget);
+			ListWidget updatedWidget = widgetRepo.save(widget);
 			updatedWidget.getTopic().getWidgets().remove(old);
 			updatedWidget.getTopic().getWidgets().add(updatedWidget);
 			
@@ -72,7 +72,7 @@ public class ParagraphWidgetService {
 	}
 	
 	
-	@DeleteMapping("/api/paragraph/widget/{widgetId}")
+	@DeleteMapping("/api/list/widget/{widgetId}")
 	public void deleteWidget(@PathVariable("widgetId") Integer widgetId) {
 		if(widgetRepo.existsById(widgetId))
 			widgetRepo.deleteById(widgetId);
