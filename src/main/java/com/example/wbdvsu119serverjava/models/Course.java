@@ -19,23 +19,6 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Module> modules;
 
-//    @ManyToOne
-//    @JsonIgnore
-//    private Faculty author;
-//
-//    @Transient
-//    public String getAuthorName() {
-//        return author != null ? author.getFirstName() + " " + author.getLastName() : "";
-//    }
-//
-//    public Faculty getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(Faculty author) {
-//        this.author = author;
-//    }
-
     public Integer getId() {
         return id;
     }

@@ -39,11 +39,14 @@ public class CourseController {
 	}
     
     @PostMapping("/api/course")
-	public Course createCourse(@RequestBody Course course, HttpSession session) {
+	public Course createCourse(@RequestBody Course course) {
 		if(course.getModules() != null)
-		{
+		{	
+			
 			for(Module m : course.getModules())
+			{
 				course.addToModules(m);
+			}
 		}
 		return repository.save(course);
 	}
