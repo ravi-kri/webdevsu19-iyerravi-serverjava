@@ -73,7 +73,7 @@ public class WidgetController {
 			return null;
 	}
 	
-	@PostMapping("/api/topic/{topicId}/{widgets}")
+	@PutMapping("/api/topic/{topicId}/widgets")
 	public List<Widget> saveWidgets(@PathVariable("topicId") Integer topicId, @RequestBody List<Widget> widgets) {
 		Topic topic = TopicController.findTopicById(topicId);
 		if(topic != null)
